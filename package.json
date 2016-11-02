@@ -1,0 +1,25 @@
+{
+  "name": "beta-router",
+  "version": "0.0.1",
+  "description": "GLG Beta Routing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Mark Stover - Gerson Lehrman Group",
+  "dependencies": {
+    "express": "4.14.0",
+    "express-device": "0.4.2",
+    "express-http-proxy": "0.10.1",
+    "moment": "2.15.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": "5.4.1",
+    "npm": "3.3.12"
+  }
+}
