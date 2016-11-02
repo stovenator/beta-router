@@ -23,11 +23,11 @@ app.listen(app.get('port'), function() {
 
 app.use('/', function(req, res, next){
     if (req.device.type == 'phone'){
-        console.log("Mobile, redirect to Beta");
+        //console.log("Mobile, redirect to Beta");
         cmAcceptBetaServer(req, res, next);
     }
     else{
-        console.log("Desktop, redirect to main");
+        //console.log("Desktop, redirect to main");
         cmAcceptServer(req, res, next);
     }
 });
