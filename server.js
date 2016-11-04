@@ -6,8 +6,9 @@ var moment = require('moment');
 var app = express();
 var start = moment().format('hh:m:ss');
 
+
 var betaServerName = process.env.CM_ACCEPT_BETA_SERVER || 'localhost:9090';
-var mainServerName = process.env.CM_ACCEPT_SERVER || 'localhost:9090';
+var mainServerName = process.env.CM_ACCEPT_SERVER || 'localhost:9091';
 
 var cmAcceptBetaServer = proxy(betaServerName);
 var cmAcceptServer = proxy(mainServerName);
@@ -19,6 +20,10 @@ app.use(device.capture({unknownUserAgentDeviceType: "desktop"}));
 app.listen(app.get('port'), function() {
     var listening = 'Beta Router listening on port ' +  app.get('port') + ' in ' + process.env.NODE_ENV + ' mode';
     console.log(start, " : ", listening);
+});
+
+app.use('/diagnostic', function(req,res,next){
+    res.send('OK');
 });
 
 app.use('/', function(req, res, next){
