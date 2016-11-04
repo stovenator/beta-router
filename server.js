@@ -8,7 +8,7 @@ var start = moment().format('hh:m:ss');
 
 
 var betaServerName = process.env.CM_ACCEPT_BETA_SERVER || 'localhost:9090';
-var mainServerName = process.env.CM_ACCEPT_SERVER || 'localhost:9091';
+var mainServerName = process.env.CM_ACCEPT_SERVER || 'localhost:9090';
 
 var cmAcceptBetaServer = proxy(betaServerName);
 var cmAcceptServer = proxy(mainServerName);
@@ -28,11 +28,11 @@ app.use('/diagnostic', function(req,res,next){
 
 app.use('/', function(req, res, next){
     if (req.device.type == 'phone'){
-        //console.log("Mobile, redirect to Beta");
+        console.log("Requesting ", req.originalUrl, " from server : ", mainServerName);
         cmAcceptBetaServer(req, res, next);
     }
     else{
-        //console.log("Desktop, redirect to main");
+        console.log("Requesting ", req.originalUrl, " from server : ", betaServerName);
         cmAcceptServer(req, res, next);
     }
 });
