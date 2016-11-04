@@ -29,10 +29,10 @@ app.use('/diagnostic', function(req,res,next){
 app.use('/', function(req, res, next){
     if (req.device.type == 'phone'){
         console.log("Requesting ", req.originalUrl, " from server : ", mainServerName);
-        cmAcceptBetaServer(req, res, next);
+        cmAcceptServer(req, res, next);
     }
     else{
         console.log("Requesting ", req.originalUrl, " from server : ", betaServerName);
-        cmAcceptServer(req, res, next);
+        cmAcceptBetaServer(req, res, next);
     }
 });
